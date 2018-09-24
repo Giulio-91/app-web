@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-user-info',
   template: 
     `<div>  
-      <img src="/assets/user.png">
+      <img src="/assets/user.png" class="user-info-container">
     </div>`,
   styles: [
     `img {

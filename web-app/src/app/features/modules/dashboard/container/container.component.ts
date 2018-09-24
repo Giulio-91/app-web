@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, animate, transition} from '@angular/animations';
+import { Component, OnInit, HostListener } from '@angular/core';
+import { trigger, style, animate, transition} from '@angular/animations';
 
 
 @Component({
@@ -49,6 +49,7 @@ export class ContainerComponent implements OnInit {
 
   menuOpen: boolean = true;
   userDetailOpen: boolean = false;
+  prova : string = "";
 
   constructor() { }
 
@@ -61,6 +62,15 @@ export class ContainerComponent implements OnInit {
 
   openCloseUserDetail () {
     this.userDetailOpen = !this.userDetailOpen; 
+  }
+
+  @HostListener('document:click', ['$event']) clickout(event) {
+    // Click outside of the menu was detected
+    console.log(event.target.className);
+    this.prova = event.target.className;
+    if (event.target.className != 'user-detail-container' && event.target.className != "user-info-container") {
+       this.userDetailOpen = false;
+   }
   }
 
 }
